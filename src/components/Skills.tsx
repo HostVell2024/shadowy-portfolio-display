@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Code, Palette, Database, Layout, Languages, LineChart, Monitor, Lightbulb } from 'lucide-react';
+import { Progress } from './ui/progress';
 
 interface Skill {
   id: number;
@@ -16,6 +17,40 @@ const Skills: React.FC = () => {
     threshold: 0.1,
     triggerOnce: true
   });
+  
+  // State for animated percentages
+  const [animatedLevels, setAnimatedLevels] = useState<{ [key: number]: number }>({});
+
+  // Animation for percentages when section comes into view
+  useEffect(() => {
+    if (inView) {
+      const timers: NodeJS.Timeout[] = [];
+      
+      skills.forEach((skill) => {
+        let startValue = 0;
+        const increment = Math.ceil(skill.level / 30); // Distribute over 30 steps
+        
+        const timer = setInterval(() => {
+          startValue += increment;
+          if (startValue >= skill.level) {
+            startValue = skill.level;
+            clearInterval(timer);
+          }
+          
+          setAnimatedLevels(prev => ({
+            ...prev,
+            [skill.id]: startValue
+          }));
+        }, 50);
+        
+        timers.push(timer);
+      });
+      
+      return () => {
+        timers.forEach(timer => clearInterval(timer));
+      };
+    }
+  }, [inView]);
 
   const skills: Skill[] = [
     {
@@ -88,7 +123,7 @@ const Skills: React.FC = () => {
           {skills.map((skill, index) => (
             <div 
               key={skill.id}
-              className={`card-glow p-6 flex flex-col ${inView ? 'animate-fade-in' : 'opacity-0'}`}
+              className={`card-glow p-6 flex flex-col hover:shadow-glow-lg transition-all duration-500 ${inView ? 'animate-fade-in' : 'opacity-0'}`}
               style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
               <div className="mb-4 bg-white/5 w-12 h-12 rounded-lg flex items-center justify-center shadow-glow-sm">
@@ -99,25 +134,24 @@ const Skills: React.FC = () => {
               <div className="mt-auto">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm text-white/70">Proficiency</span>
-                  <span className="text-sm font-medium">{skill.level}%</span>
+                  <span className="text-sm font-medium">
+                    {animatedLevels[skill.id] !== undefined ? `${animatedLevels[skill.id]}%` : '0%'}
+                  </span>
                 </div>
-                <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-white shadow-glow-sm rounded-full"
-                    style={{ 
-                      width: `${skill.level}%`,
-                      transition: 'width 1s ease-in-out',
-                      transitionDelay: `${0.5 + index * 0.1}s`
-                    }}
-                  ></div>
-                </div>
+                <Progress 
+                  value={animatedLevels[skill.id] || 0} 
+                  className="h-1.5 bg-white/10 shadow-glow-sm"
+                  style={{
+                    transition: 'all 1.5s ease-out',
+                  }}
+                />
               </div>
             </div>
           ))}
         </div>
         
         <div className={`mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 ${inView ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
-          <div className="card-glow p-8">
+          <div className="card-glow p-8 hover:shadow-glow-md transition-all duration-500">
             <h3 className="text-xl font-semibold mb-4">Professional Experience</h3>
             <div className="space-y-6">
               <div>
@@ -149,7 +183,7 @@ const Skills: React.FC = () => {
             </div>
           </div>
           
-          <div className="card-glow p-8">
+          <div className="card-glow p-8 hover:shadow-glow-md transition-all duration-500">
             <h3 className="text-xl font-semibold mb-4">Education & Certifications</h3>
             <div className="space-y-6">
               <div>
@@ -175,9 +209,9 @@ const Skills: React.FC = () => {
                   <h4 className="font-medium">Professional Certifications</h4>
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2">
-                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full">AWS Solutions Architect</span>
-                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full">Google UX Design</span>
-                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full">React Advanced</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">AWS Solutions Architect</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Google UX Design</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">React Advanced</span>
                 </div>
               </div>
             </div>
