@@ -11,6 +11,7 @@ interface Skill {
   name: string;
   level: number;
   icon: React.ReactNode;
+  description?: string;
 }
 
 const Skills: React.FC = () => {
@@ -70,56 +71,64 @@ const Skills: React.FC = () => {
       category: "Development",
       name: "Frontend Development",
       level: 90,
-      icon: <Code className="w-6 h-6" />
+      icon: <Code className="w-6 h-6" />,
+      description: "Specialized in creating responsive, interactive user interfaces with React, TypeScript, and modern CSS frameworks."
     },
     {
       id: 2,
       category: "Design",
       name: "UI/UX Design",
       level: 85,
-      icon: <Palette className="w-6 h-6" />
+      icon: <Palette className="w-6 h-6" />,
+      description: "Creating intuitive, aesthetically pleasing designs that enhance user experience and engagement."
     },
     {
       id: 3,
       category: "Development",
       name: "Backend Development",
       level: 75,
-      icon: <Database className="w-6 h-6" />
+      icon: <Database className="w-6 h-6" />,
+      description: "Developing robust server-side applications using Node.js, Express, and various database systems."
     },
     {
       id: 4,
       category: "Design",
       name: "Web Design",
       level: 95,
-      icon: <Layout className="w-6 h-6" />
+      icon: <Layout className="w-6 h-6" />,
+      description: "Crafting beautiful, functional web layouts with a focus on accessibility and cross-browser compatibility."
     },
     {
       id: 5,
       category: "Languages",
       name: "TypeScript",
       level: 85,
-      icon: <Languages className="w-6 h-6" />
+      icon: <Languages className="w-6 h-6" />,
+      description: "Expert in TypeScript, leveraging strong typing for more robust and maintainable code."
     },
     {
       id: 6,
       category: "Analysis",
       name: "Data Visualization",
       level: 70,
-      icon: <LineChart className="w-6 h-6" />
+      icon: <LineChart className="w-6 h-6" />,
+      description: "Transforming complex data into clear, insightful visual representations using D3.js and Recharts."
     },
     {
       id: 7,
       category: "Development",
       name: "Responsive Design",
       level: 90,
-      icon: <Monitor className="w-6 h-6" />
+      icon: <Monitor className="w-6 h-6" />,
+      description: "Ensuring applications work flawlessly across all device sizes from mobile to desktop."
     },
     {
       id: 8,
       category: "Design",
       name: "Creative Direction",
       level: 80,
-      icon: <Lightbulb className="w-6 h-6" />
+      icon: <Lightbulb className="w-6 h-6" />,
+      description: "Guiding design vision and strategy to create cohesive, innovative digital experiences."
     }
   ];
 
@@ -159,7 +168,17 @@ const Skills: React.FC = () => {
                   className={`h-1.5 ${hoveredCards[skill.id] ? 'bg-black/10' : 'bg-white/10'} shadow-glow-sm`}
                 />
               </div>
-              <div className="mt-4 pt-2">
+              
+              {/* Add description text above the button */}
+              <div className="mt-4 mb-2">
+                {hoveredCards[skill.id] && (
+                  <p className={`text-sm ${hoveredCards[skill.id] ? 'text-black/80' : 'text-white/80'} animate-fade-in`}>
+                    {skill.description}
+                  </p>
+                )}
+              </div>
+              
+              <div className="mt-auto pt-2">
                 <Button 
                   variant="ghost"
                   size="sm"
