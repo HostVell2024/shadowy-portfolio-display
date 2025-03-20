@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Code, Palette, Database, Layout, Languages, LineChart, Monitor, Lightbulb, ArrowRight, ArrowLeft } from 'lucide-react';
@@ -20,13 +19,9 @@ const Skills: React.FC = () => {
     triggerOnce: true
   });
   
-  // State for animated percentages
   const [animatedLevels, setAnimatedLevels] = useState<{ [key: number]: number }>({});
-  
-  // State to track which cards are being hovered
   const [hoveredCards, setHoveredCards] = useState<{ [key: number]: boolean }>({});
-  
-  // Toggle card hover state
+
   const toggleCardHover = (id: number) => {
     setHoveredCards(prev => ({
       ...prev,
@@ -34,14 +29,13 @@ const Skills: React.FC = () => {
     }));
   };
 
-  // Animation for percentages when section comes into view
   useEffect(() => {
     if (inView) {
       const timers: NodeJS.Timeout[] = [];
       
       skills.forEach((skill) => {
         let startValue = 0;
-        const increment = Math.ceil(skill.level / 30); // Distribute over 30 steps
+        const increment = Math.ceil(skill.level / 30);
         
         const timer = setInterval(() => {
           startValue += increment;
@@ -166,10 +160,10 @@ const Skills: React.FC = () => {
                 <Progress 
                   value={animatedLevels[skill.id] || 0} 
                   className={`h-1.5 ${hoveredCards[skill.id] ? 'bg-black/10' : 'bg-white/10'} shadow-glow-sm`}
+                  indicatorClassName={hoveredCards[skill.id] ? 'bg-black' : 'bg-white'}
                 />
               </div>
               
-              {/* Add description text above the button */}
               <div className="mt-4 mb-2">
                 {hoveredCards[skill.id] && (
                   <p className={`text-sm ${hoveredCards[skill.id] ? 'text-black/80' : 'text-white/80'} animate-fade-in`}>
