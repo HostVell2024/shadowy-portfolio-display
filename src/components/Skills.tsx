@@ -1,8 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Code, Palette, Database, Layout, Languages, LineChart, Monitor, Lightbulb } from 'lucide-react';
+import { Code, Palette, Database, Layout, Languages, LineChart, Monitor, Lightbulb, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Progress } from './ui/progress';
+import { Button } from './ui/button';
 
 interface Skill {
   id: number;
@@ -20,6 +21,17 @@ const Skills: React.FC = () => {
   
   // State for animated percentages
   const [animatedLevels, setAnimatedLevels] = useState<{ [key: number]: number }>({});
+  
+  // State to track which cards are being hovered
+  const [hoveredCards, setHoveredCards] = useState<{ [key: number]: boolean }>({});
+  
+  // Toggle card hover state
+  const toggleCardHover = (id: number) => {
+    setHoveredCards(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
   // Animation for percentages when section comes into view
   useEffect(() => {
@@ -123,28 +135,43 @@ const Skills: React.FC = () => {
           {skills.map((skill, index) => (
             <div 
               key={skill.id}
-              className={`card-glow p-6 flex flex-col hover:shadow-glow-lg transition-all duration-500 ${inView ? 'animate-fade-in' : 'opacity-0'}`}
+              className={`p-6 flex flex-col transition-all duration-500 ${inView ? 'animate-fade-in' : 'opacity-0'} 
+                ${hoveredCards[skill.id] 
+                  ? 'bg-white text-black shadow-glow-xl border border-white/50' 
+                  : 'card-glow bg-black text-white hover:shadow-glow-lg border border-white/10'}
+              `}
               style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
-              <div className="mb-4 bg-white/5 w-12 h-12 rounded-lg flex items-center justify-center shadow-glow-sm">
+              <div className={`mb-4 w-12 h-12 rounded-lg flex items-center justify-center ${hoveredCards[skill.id] ? 'bg-black/10 shadow-glow-sm' : 'bg-white/5 shadow-glow-sm'}`}>
                 {skill.icon}
               </div>
               <h3 className="text-lg font-medium mb-2">{skill.name}</h3>
-              <p className="text-white/60 text-sm mb-4">{skill.category}</p>
+              <p className={`text-sm mb-4 ${hoveredCards[skill.id] ? 'text-black/60' : 'text-white/60'}`}>{skill.category}</p>
               <div className="mt-auto">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-white/70">Proficiency</span>
+                  <span className={`text-sm ${hoveredCards[skill.id] ? 'text-black/70' : 'text-white/70'}`}>Proficiency</span>
                   <span className="text-sm font-medium">
                     {animatedLevels[skill.id] !== undefined ? `${animatedLevels[skill.id]}%` : '0%'}
                   </span>
                 </div>
                 <Progress 
                   value={animatedLevels[skill.id] || 0} 
-                  className="h-1.5 bg-white/10 shadow-glow-sm"
-                  style={{
-                    transition: 'all 1.5s ease-out',
-                  }}
+                  className={`h-1.5 ${hoveredCards[skill.id] ? 'bg-black/10' : 'bg-white/10'} shadow-glow-sm`}
                 />
+              </div>
+              <div className="mt-4 pt-2">
+                <Button 
+                  variant="ghost"
+                  size="sm"
+                  className={`w-full mt-2 ${hoveredCards[skill.id] ? 'text-black hover:bg-black/10' : 'text-white hover:bg-white/10'}`}
+                  onClick={() => toggleCardHover(skill.id)}
+                >
+                  {hoveredCards[skill.id] ? (
+                    <>Kembali <ArrowLeft className="ml-1 h-4 w-4" /></>
+                  ) : (
+                    <>Selengkapnya <ArrowRight className="ml-1 h-4 w-4" /></>
+                  )}
+                </Button>
               </div>
             </div>
           ))}
