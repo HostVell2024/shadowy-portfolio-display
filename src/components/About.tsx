@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { User, Mail, Calendar, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 
@@ -28,14 +28,14 @@ const About: React.FC = () => {
           >
             <h3 className="text-2xl font-semibold">About myself</h3>
             <p className="text-white/80 leading-relaxed">
-              I'm a passionate designer and developer with over 5 years of experience creating digital 
-              products and beautiful user experiences. I focus on building modern, minimal, and 
-              accessible designs that help businesses connect with their audience.
+              I'm a passionate developer and creative enthusiast with a love for both technology and art. 
+              My diverse interests in coding, editing, gaming, and photography allow me to approach projects 
+              with a unique perspective that combines technical expertise and creative vision.
             </p>
             <p className="text-white/80 leading-relaxed">
-              My approach combines clean aesthetics with intuitive functionality, ensuring that every project 
-              not only looks amazing but also delivers exceptional user experience. I believe in the power 
-              of simplicity and attention to detail.
+              When I'm not coding or editing, you can find me exploring new worlds in games or capturing 
+              moments through my camera lens. This blend of technical and creative pursuits helps me create 
+              digital experiences that are both functional and visually appealing.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
@@ -45,7 +45,7 @@ const About: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-white/60 text-sm">Name</p>
-                  <p className="font-medium">John Doe</p>
+                  <p className="font-medium">Marvel</p>
                 </div>
               </div>
               
@@ -55,7 +55,7 @@ const About: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-white/60 text-sm">Email</p>
-                  <p className="font-medium">hello@example.com</p>
+                  <p className="font-medium">marvel@example.com</p>
                 </div>
               </div>
               
@@ -64,8 +64,8 @@ const About: React.FC = () => {
                   <Calendar className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-white/60 text-sm">Experience</p>
-                  <p className="font-medium">5+ Years</p>
+                  <p className="text-white/60 text-sm">Interests</p>
+                  <p className="font-medium">Coding, Editing, Gaming, Photography</p>
                 </div>
               </div>
               
@@ -75,7 +75,7 @@ const About: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-white/60 text-sm">Location</p>
-                  <p className="font-medium">San Francisco, CA</p>
+                  <p className="font-medium">Indonesia</p>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ const About: React.FC = () => {
               <div className="aspect-square overflow-hidden rounded-2xl border border-white/20 shadow-glow-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"
-                  alt="John Doe" 
+                  alt="Marvel" 
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -110,8 +110,8 @@ const About: React.FC = () => {
               
               {/* Experience card */}
               <div className="absolute -bottom-6 -left-6 bg-black border border-white/10 rounded-lg p-4 shadow-glow-md">
-                <div className="text-3xl font-bold">5+</div>
-                <div className="text-white/70 text-sm">Years of Experience</div>
+                <div className="text-3xl font-bold">Dev</div>
+                <div className="text-white/70 text-sm">& Creative Enthusiast</div>
               </div>
               
               {/* Background decorative elements */}

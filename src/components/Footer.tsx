@@ -16,10 +16,10 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
             <h3 className="text-xl font-bold tracking-tight">
-              Portfolio<span className="text-white/70">.</span>
+              Marvel<span className="text-white/70">.</span>
             </h3>
             <p className="text-white/60 text-sm mt-2">
-              &copy; {new Date().getFullYear()} John Doe. All rights reserved.
+              &copy; {new Date().getFullYear()} Marvel. All rights reserved.
             </p>
           </div>
           

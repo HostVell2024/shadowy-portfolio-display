@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Code, Palette, Database, Layout, Languages, LineChart, Monitor, Lightbulb, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Code, Palette, Database, Layout, Languages, LineChart, Monitor, Lightbulb, ArrowRight, ArrowLeft, Camera, Gamepad } from 'lucide-react';
 import { Progress } from './ui/progress';
 import { Button } from './ui/button';
 
@@ -64,66 +64,66 @@ const Skills: React.FC = () => {
     {
       id: 1,
       category: "Development",
-      name: "Frontend Development",
-      level: 90,
+      name: "HTML",
+      level: 89,
       icon: <Code className="w-6 h-6" />,
-      description: "Specialized in creating responsive, interactive user interfaces with React, TypeScript, and modern CSS frameworks."
+      description: "Strong foundation in HTML5, semantic markup, and accessibility best practices."
     },
     {
       id: 2,
-      category: "Design",
-      name: "UI/UX Design",
-      level: 85,
+      category: "Development",
+      name: "CSS",
+      level: 87,
       icon: <Palette className="w-6 h-6" />,
-      description: "Creating intuitive, aesthetically pleasing designs that enhance user experience and engagement."
+      description: "Proficient in CSS3, animations, responsive design, and modern layout techniques."
     },
     {
       id: 3,
       category: "Development",
-      name: "Backend Development",
-      level: 75,
-      icon: <Database className="w-6 h-6" />,
-      description: "Developing robust server-side applications using Node.js, Express, and various database systems."
+      name: "JavaScript",
+      level: 57,
+      icon: <Languages className="w-6 h-6" />,
+      description: "Working knowledge of JavaScript fundamentals, DOM manipulation, and basic frameworks."
     },
     {
       id: 4,
-      category: "Design",
-      name: "Web Design",
-      level: 95,
+      category: "Creative",
+      name: "Editing",
+      level: 98,
       icon: <Layout className="w-6 h-6" />,
-      description: "Crafting beautiful, functional web layouts with a focus on accessibility and cross-browser compatibility."
+      description: "Expert in photo and video editing with an eye for detail and artistic composition."
     },
     {
       id: 5,
-      category: "Languages",
-      name: "TypeScript",
-      level: 85,
-      icon: <Languages className="w-6 h-6" />,
-      description: "Expert in TypeScript, leveraging strong typing for more robust and maintainable code."
+      category: "Technical",
+      name: "Coding",
+      level: 97,
+      icon: <Code className="w-6 h-6" />,
+      description: "Advanced problem-solving skills and strong understanding of programming concepts."
     },
     {
       id: 6,
-      category: "Analysis",
-      name: "Data Visualization",
-      level: 70,
-      icon: <LineChart className="w-6 h-6" />,
-      description: "Transforming complex data into clear, insightful visual representations using D3.js and Recharts."
+      category: "Entertainment",
+      name: "Gaming",
+      level: 78,
+      icon: <Gamepad className="w-6 h-6" />,
+      description: "Experienced gamer with strategic thinking and quick reflexes."
     },
     {
       id: 7,
-      category: "Development",
-      name: "Responsive Design",
-      level: 90,
-      icon: <Monitor className="w-6 h-6" />,
-      description: "Ensuring applications work flawlessly across all device sizes from mobile to desktop."
+      category: "Creative",
+      name: "Photography",
+      level: 85,
+      icon: <Camera className="w-6 h-6" />,
+      description: "Skilled in composition, lighting, and capturing meaningful moments."
     },
     {
       id: 8,
       category: "Design",
-      name: "Creative Direction",
-      level: 80,
+      name: "UI/UX Design",
+      level: 75,
       icon: <Lightbulb className="w-6 h-6" />,
-      description: "Guiding design vision and strategy to create cohesive, innovative digital experiences."
+      description: "Creating intuitive user interfaces with focus on user experience and visual appeal."
     }
   ];
 
@@ -193,66 +193,64 @@ const Skills: React.FC = () => {
         
         <div className={`mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 ${inView ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
           <div className="card-glow p-8 hover:shadow-glow-md transition-all duration-500 hover:scale-105">
-            <h3 className="text-xl font-semibold mb-4">Professional Experience</h3>
+            <h3 className="text-xl font-semibold mb-4">Professional Interests</h3>
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between">
-                  <h4 className="font-medium">Senior Frontend Developer</h4>
-                  <span className="text-white/60 text-sm">2020 - Present</span>
+                  <h4 className="font-medium">Web Development</h4>
                 </div>
-                <p className="text-white/70 text-sm">TechVision Inc.</p>
-                <p className="text-white/60 text-sm mt-2">Led frontend development for enterprise web applications, implementing modern UI/UX practices and optimizing performance.</p>
+                <p className="text-white/60 text-sm mt-2">Creating responsive and interactive web applications using modern technologies.</p>
               </div>
               
               <div>
                 <div className="flex justify-between">
-                  <h4 className="font-medium">UI/UX Designer</h4>
-                  <span className="text-white/60 text-sm">2018 - 2020</span>
+                  <h4 className="font-medium">Digital Content Creation</h4>
                 </div>
-                <p className="text-white/70 text-sm">CreativeMinds Studio</p>
-                <p className="text-white/60 text-sm mt-2">Created user-centered designs for digital products, conducted user research, and developed interactive prototypes.</p>
+                <p className="text-white/60 text-sm mt-2">Producing engaging visual and interactive content for digital platforms.</p>
               </div>
               
               <div>
                 <div className="flex justify-between">
-                  <h4 className="font-medium">Web Developer</h4>
-                  <span className="text-white/60 text-sm">2016 - 2018</span>
+                  <h4 className="font-medium">Photography</h4>
                 </div>
-                <p className="text-white/70 text-sm">DigitalSolutions LLC</p>
-                <p className="text-white/60 text-sm mt-2">Developed responsive websites and progressive web applications with modern JavaScript frameworks.</p>
+                <p className="text-white/60 text-sm mt-2">Capturing moments and creating visual stories through the lens.</p>
               </div>
             </div>
           </div>
           
           <div className="card-glow p-8 hover:shadow-glow-md transition-all duration-500 hover:scale-105">
-            <h3 className="text-xl font-semibold mb-4">Education & Certifications</h3>
+            <h3 className="text-xl font-semibold mb-4">Tools & Technologies</h3>
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between">
-                  <h4 className="font-medium">M.S. in Computer Science</h4>
-                  <span className="text-white/60 text-sm">2014 - 2016</span>
-                </div>
-                <p className="text-white/70 text-sm">Stanford University</p>
-                <p className="text-white/60 text-sm mt-2">Focused on human-computer interaction and web technologies.</p>
-              </div>
-              
-              <div>
-                <div className="flex justify-between">
-                  <h4 className="font-medium">B.S. in Computer Science</h4>
-                  <span className="text-white/60 text-sm">2010 - 2014</span>
-                </div>
-                <p className="text-white/70 text-sm">MIT</p>
-                <p className="text-white/60 text-sm mt-2">Dean's List, Graduated with Honors.</p>
-              </div>
-              
-              <div>
-                <div className="flex justify-between">
-                  <h4 className="font-medium">Professional Certifications</h4>
+                  <h4 className="font-medium">Development Tools</h4>
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2">
-                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">AWS Solutions Architect</span>
-                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Google UX Design</span>
-                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">React Advanced</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Visual Studio Code</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Git</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Chrome DevTools</span>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between">
+                  <h4 className="font-medium">Creative Software</h4>
+                </div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Adobe Photoshop</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Adobe Premiere Pro</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Lightroom</span>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between">
+                  <h4 className="font-medium">Gaming Platforms</h4>
+                </div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">PC</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">PlayStation</span>
+                  <span className="text-xs bg-white/10 text-white/80 px-2.5 py-1 rounded-full shadow-glow-sm">Mobile</span>
                 </div>
               </div>
             </div>

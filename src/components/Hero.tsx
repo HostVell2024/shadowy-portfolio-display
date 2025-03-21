@@ -43,14 +43,14 @@ const Hero: React.FC = () => {
           className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight opacity-0"
         >
           <span className="block">Hi, I'm</span>
-          <span className="block mt-2 bg-clip-text bg-gradient-to-r from-white to-white/80">John Doe</span>
+          <span className="block mt-2 bg-clip-text bg-gradient-to-r from-white to-white/80">Marvel</span>
         </h1>
         
         <p 
           ref={subtitleRef}
           className="text-xl md:text-2xl font-light text-white/80 max-w-2xl mx-auto mb-10 opacity-0"
         >
-          Digital Designer & Frontend Developer creating minimal and beautiful digital experiences
+          Developer and creative enthusiast passionate about coding, editing, gaming, and photography
         </p>
         
         <div 
