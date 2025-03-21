@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Code, Palette, Database, Layout, Languages, LineChart, Monitor, Lightbulb, ArrowRight, ArrowLeft } from 'lucide-react';
@@ -138,10 +139,10 @@ const Skills: React.FC = () => {
           {skills.map((skill, index) => (
             <div 
               key={skill.id}
-              className={`p-6 flex flex-col transition-all duration-500 ${inView ? 'animate-fade-in' : 'opacity-0'} 
+              className={`p-6 flex flex-col transition-all duration-500 transform ${inView ? 'animate-fade-in' : 'opacity-0'} 
                 ${hoveredCards[skill.id] 
-                  ? 'bg-white text-black shadow-glow-xl border border-white/50' 
-                  : 'card-glow bg-black text-white hover:shadow-glow-lg border border-white/10'}
+                  ? 'bg-white text-black shadow-glow-xl border border-white/50 scale-105' 
+                  : 'card-glow bg-black text-white hover:shadow-glow-lg border border-white/10 hover:scale-105'}
               `}
               style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
@@ -191,7 +192,7 @@ const Skills: React.FC = () => {
         </div>
         
         <div className={`mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 ${inView ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
-          <div className="card-glow p-8 hover:shadow-glow-md transition-all duration-500">
+          <div className="card-glow p-8 hover:shadow-glow-md transition-all duration-500 hover:scale-105">
             <h3 className="text-xl font-semibold mb-4">Professional Experience</h3>
             <div className="space-y-6">
               <div>
@@ -223,7 +224,7 @@ const Skills: React.FC = () => {
             </div>
           </div>
           
-          <div className="card-glow p-8 hover:shadow-glow-md transition-all duration-500">
+          <div className="card-glow p-8 hover:shadow-glow-md transition-all duration-500 hover:scale-105">
             <h3 className="text-xl font-semibold mb-4">Education & Certifications</h3>
             <div className="space-y-6">
               <div>
